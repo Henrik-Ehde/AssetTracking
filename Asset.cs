@@ -8,15 +8,18 @@ namespace AssetTracking
 {
     abstract class Asset
     {
-        public Asset(string brand, DateOnly purchaseDate, int price, string office)
+        //Stores all the information about an asset.
+        //One constructor recieves DateOnly. The other recieves a string and tries to convert it to a date.
+        //Assets have an expiration date which is 3 years after their purchase date.
+        public Asset(string brand, DateOnly purchaseDate, int price, Office office)
         {
             Price = price;
             Brand = brand;
             PurchaseDate = purchaseDate;
-            ExpireTime = purchaseDate.AddYears(3);
+            ExpirationDate = purchaseDate.AddYears(3);
             Office = office;
         }        
-        public Asset(string brand, string purchaseDate, int price, string office)
+        public Asset(string brand, string purchaseDate, int price, Office office)
         {
             try
             {
@@ -30,28 +33,30 @@ namespace AssetTracking
 
             Price = price;
             Brand = brand;            
-            ExpireTime = PurchaseDate.AddYears(3);
+            ExpirationDate = PurchaseDate.AddYears(3);
             Office = office;
         }
 
         public int Price { get; set; }
         public string Brand { get; set; }
         public DateOnly PurchaseDate { get; set; }
-        public DateOnly ExpireTime { get; set; }
-        public string Office { get; set; }
+        public DateOnly ExpirationDate { get; set; }
+        public Office Office { get; set; }
 
     }
 
+    //Different types of assets. The Constructors use the base constructor.
+
     class Laptop : Asset
     {
-        public Laptop( string brand, DateOnly purchaseDate, int price, string office) : base(brand, purchaseDate, price, office) { }
-        public Laptop( string brand, string purchaseDate, int price, string office) : base(brand, purchaseDate, price, office) { }
+        public Laptop( string brand, DateOnly purchaseDate, int price, Office office) : base(brand, purchaseDate, price, office) { }
+        public Laptop( string brand, string purchaseDate, int price, Office office) : base(brand, purchaseDate, price, office) { }
     }
     
     class Phone : Asset
     {
-        public Phone( string brand, DateOnly purchaseDate, int price, string office) : base(brand, purchaseDate, price, office) { }
-        public Phone( string brand, string purchaseDate, int price, string office) : base(brand, purchaseDate, price, office) { }
+        public Phone( string brand, DateOnly purchaseDate, int price, Office office) : base(brand, purchaseDate, price, office) { }
+        public Phone( string brand, string purchaseDate, int price, Office office) : base(brand, purchaseDate, price, office) { }
     }
 
 
