@@ -55,7 +55,7 @@ void PrintList()
             stringToWrite += "EXPIRED";
         }
         else if (timeLeft.Days < 90) Console.ForegroundColor = ConsoleColor.Red;
-        else if (timeLeft.Days < 180) Console.ForegroundColor = ConsoleColor.Yellow;
+        else if (timeLeft.Days < 180) Console.ForegroundColor = ConsoleColor.Yellow; 
 
         Console.WriteLine(stringToWrite);
         Console.ResetColor();
